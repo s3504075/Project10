@@ -26,6 +26,7 @@ public class Reminder {
         return contact;
     }
 
+
     public String getReminder()
     {
         return remindertxt;

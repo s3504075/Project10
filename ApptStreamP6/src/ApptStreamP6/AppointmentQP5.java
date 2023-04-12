@@ -310,25 +310,27 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
         String description = "Pending Appointment.";
         AppointmentQP5 A1 = new AppointmentQP5();  //object
 
-        ArrayList<Contact> contactlist = A1.readContacts(); //added code for project 8
+        //ArrayList<Contact> contactlist = A1.readContacts(); //added code for project 8 to read in contacts from file
 
-        AppointmentProcessor processor = new AppointmentProcessor(A1.tsqueue);
+        ContactDB.createDB();
+        ArrayList<Contact> contactList=ContactDB.readUserDB();
+        AppointmentProcessor processor = new AppointmentProcessor(A1.tsqueue); //create queue
 
 
         reminder=ZonedDateTime.now(); //set this default to this moment to ensure delivery
 
-
+/*
         if(contactlist.isEmpty())
         {
-           contactlist.add(new Contact("Olivia", "Migiano", "OliviaM@att.net",
+           contactlist.add(new Contact(0,"Olivia", "Migiano", "OliviaM@att.net",
                    "904-666-2424", remindertypes.EMAIL, new Locale("EN"), zone));
-            contactlist.add(new Contact("Olivier", "Giroud", "olg@acmilan.com",
+            contactlist.add(new Contact(0,"Olivier", "Giroud", "olg@acmilan.com",
                     "606-11-2232", remindertypes.EMAIL, new Locale("FR"), zone));
-            contactlist.add(new Contact("Robin", "Gosens", "RG8@intermilan.com",
+            contactlist.add(new Contact(0,"Robin", "Gosens", "RG8@intermilan.com",
                     "606-31-2071", remindertypes.TEXT, new Locale("DE"), zone));
-            contactlist.add(new Contact("Ciro", "Immobile", "Ciro@lazio.com",
+            contactlist.add(new Contact(0,"Ciro", "Immobile", "Ciro@lazio.com",
                     "696-969-6666", remindertypes.TEXT, new Locale("IT"),zone ));
-            contactlist.add(new Contact("Eric", "Zheng", "Eric@China.com",
+            contactlist.add(new Contact(0,"Eric", "Zheng", "Eric@China.com",
                     "232-22-2232", remindertypes.EMAIL, new Locale("ZH"), zone));
         }
 
@@ -336,7 +338,7 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
             System.out.println("Contacts were read from data file");
 
         }
-
+*/
         //set appt general information
         for (int i = 0; i < NUMBERAPPTS; i++) //create n random appts for clients
         {
@@ -348,12 +350,12 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
             //Appointment clientappt6 = new Appointment();
             //Appointment clientappt7 = new Appointment();
 
-            clientappt.setContact(contactlist.get(0)); //set the client info,
+            clientappt.setContact(contactList.get(0)); //set the client info,
                                                        // clientappt.getContact() gets the contact
-            clientappt2.setContact(contactlist.get(1));
-            clientappt3.setContact(contactlist.get(2));
-            clientappt4.setContact(contactlist.get(3));
-            clientappt5.setContact(contactlist.get(4));
+            clientappt2.setContact(contactList.get(1));
+            clientappt3.setContact(contactList.get(2));
+            clientappt4.setContact(contactList.get(3));
+            clientappt5.setContact(contactList.get(4));
             //clientappt6.setContact(client6);
             //clientappt7.setContact(client7);
 
@@ -405,7 +407,7 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
                 //to generate new times for the 2 new clients, reference prior program vrsion to re-add below here
 
                 processor.endProcessing(); //kill thread
-                result=A1.writeContacts(contactlist);
+                result=A1.writeContacts(contactList);
                 if(result == 1)
                 {
                     System.out.println("Contacts written to file \n");
@@ -459,7 +461,7 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
                 //to generate new times for the 2 new clients, reference prior program version to re-add below here
 
                 processor.endProcessing(); //kill thread
-                result=A1.writeContacts(contactlist);
+        /*        result=A1.writeContacts(contactList);
                 if(result == 1)
                 {
                     System.out.println("CONTACTS WRITTEN TO FILE! \n");
@@ -467,10 +469,11 @@ public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
                 else
                 {
                     System.out.println("Error writing to file. \n");
-                }
+                }*/
             }
         }
         //System.out.println("starting forEach");
         //A1.stream.forEach(System.out::println);
+        ContactDB.deleteDB();
     }
 }

@@ -14,6 +14,7 @@ public interface CalendarReminder
    // public void sendReminder(String reminder);
 
     public Reminder buildReminder(Appointment appt);
+
     // send a reminder using contact's preferred notification method
     public void sendReminder(Reminder reminder);
 
