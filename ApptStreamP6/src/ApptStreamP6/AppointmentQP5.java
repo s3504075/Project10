@@ -12,6 +12,7 @@
 
 package ApptStreamP6;
 
+
 import java.io.*;
 import java.time.*;
 import java.time.format.FormatStyle;
@@ -22,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import Dispatch.Dispatcher; //import local dispatcher
+
 
 public class AppointmentQP5 implements CalendarReminder, Dispatcher<Reminder>
 {
