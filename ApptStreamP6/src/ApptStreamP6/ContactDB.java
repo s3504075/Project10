@@ -154,6 +154,7 @@ public final class ContactDB {
             }
             pStatement.executeBatch();
             System.out.println("Records inserted");
+            //can put sleep here
         } catch (BatchUpdateException e) { // records exist, warn and carry on
             System.out.println("could not insert record, primary key violation?");
             e.printStackTrace();
