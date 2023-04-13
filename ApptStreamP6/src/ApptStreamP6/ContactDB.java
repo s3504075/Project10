@@ -45,7 +45,7 @@ public final class ContactDB {
     private static final String TABLE_INSERT = "USE " + DB_NAME + ";" +
             "INSERT INTO " + USER_TABLE_NAME +
             "(ID, FNAME, LNAME, EMAIL, LOCALE, BIRTHDAY)" +
-            "VALUES(?, ?, ?, ?, ?, ?)";
+            "VALUES(?, ?, ?, ?, ?, ?, ?, ?)"; //placeholders for strings
     private static final String TABLE_SELECT = "SELECT * FROM " + USER_TABLE_NAME + ";";
     private static final String TABLE_DROP = "DROP TABLE " + USER_TABLE_NAME + ";";
     private static final String DB_DROP = "DROP DATABASE " + DB_NAME + ";";

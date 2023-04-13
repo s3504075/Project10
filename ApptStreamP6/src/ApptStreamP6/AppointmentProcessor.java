@@ -28,6 +28,17 @@ public class AppointmentProcessor extends Thread
         this.safeQueue = safeQueue;
 
         logger = new ApptLogger();
+
+
+        // wait for a bit to allow eventlog server to start
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            System.out.println("sleep interrupted! " + ie);
+        }
+
+
+
         try {
             logSocket = new Socket("localhost", ApptLogger.LOGPORT);
             System.out.println("connected to log server");
