@@ -18,8 +18,8 @@ public final class ContactDB {
     private static boolean connected = false;
     private static boolean dbCreated = false;
 
-    private static final String DB_NAME = "BirthdayGreetings";
-    private static final String USER_TABLE_NAME = "Users";
+    private static final String DB_NAME = "AppointmentContacts";
+    private static final String USER_TABLE_NAME = "Contacts";
 
     // connection URLs: one for no specified DB, other for DB name
     private static final String CONN_URL = "jdbc:sqlserver://localhost:1433;" +
@@ -44,7 +44,7 @@ public final class ContactDB {
             "ZONE varchar(80) NOT NULL);";
     private static final String TABLE_INSERT = "USE " + DB_NAME + ";" +
             "INSERT INTO " + USER_TABLE_NAME +
-            "(ID, FNAME, LNAME, EMAIL, LOCALE, BIRTHDAY)" +
+            "(ID, FNAME, LNAME, EMAIL, PHONE, REMINDER, LOCALE, ZONE)" +
             "VALUES(?, ?, ?, ?, ?, ?, ?, ?)"; //placeholders for strings
     private static final String TABLE_SELECT = "SELECT * FROM " + USER_TABLE_NAME + ";";
     private static final String TABLE_DROP = "DROP TABLE " + USER_TABLE_NAME + ";";
