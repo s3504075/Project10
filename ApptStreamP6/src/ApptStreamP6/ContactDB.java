@@ -58,7 +58,7 @@ public final class ContactDB {
         int tries = 0;
         while (connected == false) {
             tries++;
-            if (tries > 2) {  // no infinite loops allowed
+            if (tries > 4) {  // no infinite loops allowed
                 System.out.println("could not get connection, exiting");
                 System.exit(0);
             }
@@ -68,6 +68,8 @@ public final class ContactDB {
                 connected = true;
                 ;
             } catch (SQLServerException e) {
+                e.printStackTrace();
+
                 if (tries == 1) { // failed with the db name, fall back to no-name
                     System.out.println("could not connect to DB, trying alternate URL");
                     url = CONN_NODB_URL;
