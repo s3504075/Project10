@@ -154,7 +154,14 @@ public final class ContactDB {
             }
             pStatement.executeBatch();
             System.out.println("Records inserted");
-            //can put sleep here
+            //sleep 30 min to see database info
+            //can put sleep here, use Microsoft SQL Server Management Studio to see database info, viewable under databases/table name
+            /*try {
+                Thread.sleep(1800000);
+            } catch (InterruptedException ie) {
+                System.out.println("sleep interrupted! " + ie);
+            }*/
+
         } catch (BatchUpdateException e) { // records exist, warn and carry on
             System.out.println("could not insert record, primary key violation?");
             e.printStackTrace();
